@@ -15,6 +15,7 @@ jobs:
           repository: Tomtestash/renovate-config
           token: ${{ secrets.RENOVATE_SECRET }}
           ref: main
+      - name: Get Pwd
         run: |
           pwd
       - name: Checkout
