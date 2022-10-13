@@ -11,6 +11,7 @@ jobs:
           repository: Tomtestash/renovate-config
           token: ${{ secrets.RENOVATE_SECRET }}
           path: default.json
+          ref: main
       - name: Checkout
         uses: actions/checkout@v2.0.0
       - name: Self-hosted Renovate
