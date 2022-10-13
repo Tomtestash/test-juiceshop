@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get Default
-        uses: actions/checkout@v2.5.0
+        uses: actions/checkout@v3
         with:
           repository: Tomtestash/renovate-config
           token: ${{ secrets.RENOVATE_SECRET }}
           ref: main
           path: ~/default-renovate/
       - name: Checkout
-        uses: actions/checkout@v2.5.0
+        uses: actions/checkout@v3
       - name: Get Pwd
         run: |
           ls /home/runner/work/
