@@ -19,3 +19,4 @@ jobs:
         with:
           configurationFile: default.json
           token: ${{ secrets.RENOVATE_SECRET }}
+          
