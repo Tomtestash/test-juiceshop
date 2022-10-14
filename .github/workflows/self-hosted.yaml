@@ -25,7 +25,7 @@ jobs:
           clean: false
       - name: Add Local Repo
         run: |
-          jq '.repositories=["${{ GITHUB_WORKSPACE }}"]' <default-renovate/default.json >default-renovate/renovate-default.json
+          jq '.repositories=["$GITHUB_WORKSPACE"]' <default-renovate/default.json >default-renovate/renovate-default.json
       - name: Validate Config Fetch
         run: |
           cat default-renovate/renovate-default.json
