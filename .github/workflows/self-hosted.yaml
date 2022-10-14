@@ -9,27 +9,24 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
-      - name: Get Default
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          clean: false
+      - name: Get Pwd
+        run: |
+          ls
+      - name: Get Default Config
+        uses: actions/checkout@v2
         with:
           repository: Tomtestash/renovate-config
           token: ${{ secrets.RENOVATE_SECRET }}
           ref: main
           path: default-renovate/
           clean: false
-      - name: Get Pwd
-        run: |
-          ls
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          clean: false
-      - name: Get Pwd
-        run: |
-          ls
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.118.0
         with:
-          configurationFile: ~/default-renovate/default.json
+          configurationFile: default-renovate/default.json
           token: ${{ secrets.RENOVATE_SECRET }}
 
