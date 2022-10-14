@@ -23,11 +23,14 @@ jobs:
           ref: main
           path: default-renovate/
           clean: false
+      - name: Add Local Repo
+        run: |
+          jq '.repositories=["${{ GITHUB_WORKSPACE }}"]' <default-renovate/default.json >default-renovate/renovate-default.json
       - name: Validate Config Fetch
         run: |
-          cat default-renovate/default.json
+          cat default-renovate/renovate-default.json
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.118.0
         with:
-          configurationFile: default-renovate/default.json
+          configurationFile: default-renovate/renovate-default.json
           token: ${{ secrets.RENOVATE_SECRET }}
