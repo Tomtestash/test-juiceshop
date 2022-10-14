@@ -29,4 +29,4 @@ jobs:
         with:
           configurationFile: default-renovate/default.json
           token: ${{ secrets.RENOVATE_SECRET }}
-
+          
