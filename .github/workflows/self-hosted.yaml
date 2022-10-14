@@ -15,7 +15,7 @@ jobs:
           repository: Tomtestash/renovate-config
           token: ${{ secrets.RENOVATE_SECRET }}
           ref: main
-          path: ../default-renovate/
+          path: /default-renovate/
           clean: false
       - name: Get Pwd
         run: |
