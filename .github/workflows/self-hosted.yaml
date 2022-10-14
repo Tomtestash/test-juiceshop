@@ -25,7 +25,7 @@ jobs:
           clean: false
       - name: Validate Config Fetch
         run: |
-          ls default-renovate/default.json
+          cat default-renovate/default.json
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.118.0
         with:
