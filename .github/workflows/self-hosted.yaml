@@ -21,6 +21,8 @@ jobs:
           pwd 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          clean: false
       - name: Get Pwd
         run: |
           pwd 
