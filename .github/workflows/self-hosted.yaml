@@ -16,6 +16,7 @@ jobs:
           token: ${{ secrets.RENOVATE_SECRET }}
           ref: main
           path: ../default-renovate/
+          clean: false
       - name: Get Pwd
         run: |
           ls ..
