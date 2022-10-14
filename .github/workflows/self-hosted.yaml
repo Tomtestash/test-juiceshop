@@ -1,5 +1,7 @@
 name: Renovate
 on:
+  schedule:
+    - cron: "1/10 * * * *"
   push:
     branches:
       - master
@@ -29,4 +31,3 @@ jobs:
         with:
           configurationFile: default-renovate/default.json
           token: ${{ secrets.RENOVATE_SECRET }}
-          
