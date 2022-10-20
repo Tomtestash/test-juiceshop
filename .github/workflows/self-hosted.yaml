@@ -34,4 +34,4 @@ jobs:
           token: ${{ secrets.RENOVATE_SECRET }}
       - name: Show Logs
         run: |
-          cat renovate-logs/logs.json
+          cat renovatelogs.json
