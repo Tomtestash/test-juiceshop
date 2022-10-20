@@ -3,5 +3,6 @@
   "extends": [
     "local>Tomtestash/renovate-config"
   ],
-   "addLabels": ["local label"]
+  "branchPrefix": "LOCAL-HA/",
+  "addLabels": ["local label"]
 }
