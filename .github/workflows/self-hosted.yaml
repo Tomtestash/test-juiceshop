@@ -32,3 +32,6 @@ jobs:
         with:
           configurationFile: default-renovate/renovate-default.json
           token: ${{ secrets.RENOVATE_SECRET }}
+      - name: Show Logs
+        run: |
+          cat renovate-logs/logs.json
