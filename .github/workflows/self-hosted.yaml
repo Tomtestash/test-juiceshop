@@ -24,9 +24,9 @@ jobs:
       - name: Add Local Repo
         run: |
           jq '.repositories=["${{ github.repository }}"]' <default-renovate/default.json >default-renovate/renovate-default.json
-      - name: Show Logs
+      - name: Setup Logs
         run: |
-          pwd
+          touch default-renovate/renovate-logs.json
       - name: Validate Config Fetch
         run: |
           cat default-renovate/renovate-default.json
@@ -35,6 +35,4 @@ jobs:
         with:
           configurationFile: default-renovate/renovate-default.json
           token: ${{ secrets.RENOVATE_SECRET }}
-      - name: Show Logs
-        run: |
-          cat /home/runner/renovatelogs.json
+
