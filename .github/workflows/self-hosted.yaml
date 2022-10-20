@@ -27,6 +27,12 @@ jobs:
       - name: Setup Logs
         run: |
           touch default-renovate/renovate-logs.json
+      - name: PWD
+        run: |
+          pwd
+      - name: ls
+        run: |
+          ls         
       - name: Validate Config Fetch
         run: |
           cat default-renovate/renovate-default.json
