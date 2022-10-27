@@ -16,7 +16,7 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.118.0
         with:
-          configurationFile: default-renovate/renovate-default.json
+          configurationFile: renovate.json
           token: ${{ secrets.RENOVATE_SECRET }}
       - name: Show Logs
         run: |
