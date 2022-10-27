@@ -18,6 +18,3 @@ jobs:
         with:
           configurationFile: renovate.json
           token: ${{ secrets.RENOVATE_SECRET }}
-      - name: Show Logs
-        run: |
-          cat /tmp/renovatelogs.json
