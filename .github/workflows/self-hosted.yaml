@@ -19,12 +19,12 @@ jobs:
       - name: SBOM
         uses: anchore/sbom-action@v0.13.1
         with:
-          artifact-name: sbom.spdx
+          artifact-name: /tmp/sbom/sbom.spdx
           #format: spdx-json
           #output-file: "${{ github.event.repository.name }}-sbom.spdx.json"
       - name: Verify SBOM 
         run: |
-          cat sbom.spdx
+          cat /tmp/sbom/sbom.spdx
 
 
   renovate:
