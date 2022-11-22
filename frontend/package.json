@@ -37,7 +37,7 @@
     "@ngx-translate/http-loader": "6.0.0",
     "anuglar2-qrcode": "2.0.9998",
     "canvas-confetti": "1.5.1",
-    "core-js": "3.25.5",
+    "core-js": "3.26.1",
     "file-saver": "2.0.5",
     "flag-icons": "6.6.6",
     "font-mfizz": "2.4.1",
