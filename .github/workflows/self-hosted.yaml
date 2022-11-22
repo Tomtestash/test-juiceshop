@@ -13,10 +13,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           clean: false
+      - name: Make log output-file
+        run: | 
+          touch /tmp/sbom.json
       - name: SBOM
         uses: anchore/sbom-action@v0.13.1
         with:
-          output-file: ./tmp/sbom.json
+          output-file: /tmp/sbom.json
   renovate:
     runs-on: ubuntu-latest
     steps:
