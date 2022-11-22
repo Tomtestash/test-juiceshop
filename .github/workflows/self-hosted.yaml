@@ -22,7 +22,7 @@ jobs:
           output-file: /tmp/sbom.json
       - name: Verify SBOM 
         run: |
-          cat /tmp/sbom.json
+          cat /tmp/sbom-action-xhajob/test-juiceshop-container-scan.spdx.json
 
 
   renovate:
