@@ -19,10 +19,11 @@ jobs:
       - name: SBOM
         uses: anchore/sbom-action@v0.13.1
         with:
-          output-file: /tmp/sbom.json
+          format: spdx-json
+          output-file: "${{ github.event.repository.name }}-sbom.spdx.json"
       - name: Verify SBOM 
         run: |
-          cat /tmp/sbom-action-xhajob/test-juiceshop-container-scan.spdx.json
+          cat "${{ github.event.repository.name }}-sbom.spdx.json"
 
 
   renovate:
