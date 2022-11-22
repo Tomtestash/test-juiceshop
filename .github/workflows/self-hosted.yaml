@@ -1,4 +1,4 @@
-name: Renovate
+name: Golden Security Pipeline
 on:
   push:
     branches:
@@ -6,6 +6,17 @@ on:
   workflow_dispatch:
 
 jobs:
+  container-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          clean: false
+      - name: SBOM
+        uses: anchore/sbom-action@v0.13.1
+        with:
+          output-file: ./tmp/sbom.json
   renovate:
     runs-on: ubuntu-latest
     steps:
