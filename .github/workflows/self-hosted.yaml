@@ -13,17 +13,12 @@ jobs:
         uses: actions/checkout@v2
         with:
           clean: false
-      - name: ls
-        run: |
-          ls
-      - name: Make log output-file
-        run: | 
-          touch sbom.json
       - name: SBOM
         uses: anchore/sbom-action@v0.13.1
         with:
+          dependency-snapshot: true
           artifact-name: sbom.json
-      - name: ls
+      - name: Cat SBOM
         run: |
           cat /tmp/sbom-action-*/sbom.json  
       # - name: Verify SBOM 
