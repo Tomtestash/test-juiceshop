@@ -28,9 +28,9 @@ jobs:
       - name: ls
         run: |
           ls      
-      - name: Verify SBOM 
-        run: |
-          cat sbom.json
+      # - name: Verify SBOM 
+      #   run: |
+      #     cat sbom.json
 
 
   renovate:
