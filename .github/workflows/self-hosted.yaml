@@ -25,7 +25,7 @@ jobs:
           artifact-name: sbom.json
       - name: ls
         run: |
-          ls      
+          cat /tmp/sbom-action-*/sbom.json  
       # - name: Verify SBOM 
       #   run: |
       #     cat sbom.json
