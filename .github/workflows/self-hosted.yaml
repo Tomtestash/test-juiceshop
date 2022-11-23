@@ -22,9 +22,8 @@ jobs:
       - name: SBOM
         uses: anchore/sbom-action@v0.13.1
         with:
-          upload-artifact: false
           dependency-snapshot: true
-          artifact-name: sbom.spdx
+          artifact-name: sbom.json
           output-file: sbom.spdx.json
       - name: ls
         run: |
