@@ -18,6 +18,7 @@ jobs:
         with:
           dependency-snapshot: true
           artifact-name: sbom.json
+          path: .
       - name: Cat SBOM
         run: |
           cat /tmp/sbom-action-*/sbom.json  
