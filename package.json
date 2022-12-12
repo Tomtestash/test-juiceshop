@@ -218,7 +218,7 @@
     "@types/pug": "2.0.6",
     "@types/request": "2.48.8",
     "@types/sanitize-html": "1.27.2",
-    "@types/semver": "7.3.12",
+    "@types/semver": "7.3.13",
     "@types/sequelize": "4.28.14",
     "@types/serve-index": "1.9.1",
     "@types/sinon": "10.0.13",
