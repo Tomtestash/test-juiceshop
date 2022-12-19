@@ -7,6 +7,9 @@
   "labels": ["local label"],
   "packageRules": [
     {
+      "matchPackagePatterns": [
+        "*"
+      ],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "automergeType": "pr",
