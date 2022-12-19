@@ -5,6 +5,12 @@
   ],
   "branchPrefix": "LOCAL-HA/",
   "labels": ["local label"],
-  "automerge": true
-
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "auto"
+    }
+  ]
 }
