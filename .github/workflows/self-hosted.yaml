@@ -21,13 +21,13 @@ jobs:
           clean: false
       - name: CAT default
         run: |
-          ls 
+          cat default-renovate.json 
       - name: CAT local
         run: |
           cat renovate.json
       - name: Concat config files
         run: |
-          jq -s 'add' <default-renovate/default.json >default-renovate/renovate-default.json renovate.json
+          jq -s 'add' renovate-default.json renovate.json
       - name: Add Local Repo
         run: |
           jq '.repositories=["${{ github.repository }}"]' <default-renovate/default.json >default-renovate/renovate-default.json     
