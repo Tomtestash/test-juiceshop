@@ -26,33 +26,11 @@ jobs:
       #   run: |
       #     cat sbom.json
 
-
   renovate:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Renovate
+        uses: StashInvest/github-action-renovate@v1.0.2
         with:
-          clean: false
-      - name: Get Default Config
-        uses: actions/checkout@v2
-        with:
-          repository: Tomtestash/renovate-config
-          token: ${{ secrets.RENOVATE_SECRET }}
-          ref: main
-          path: default-renovate/
-          clean: false
-      - name: Add Local Repo
-        run: |
-          jq '.repositories=["${{ github.repository }}"]' <default-renovate/default.json >default-renovate/renovate-default.json     
-      - name: Validate Config Fetch
-        run: |
-          cat default-renovate/renovate-default.json
-      - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v32.118.0
-        with:
-          configurationFile: default-renovate/renovate-default.json
-          token: ${{ secrets.RENOVATE_SECRET }}
-      - name: Show Logs
-        run: |
-          cat /tmp/renovatelogs.json
+          renovate_secret: ${{ secrets.RENOVATE_SECRET }}
+          enable_automerge: false
