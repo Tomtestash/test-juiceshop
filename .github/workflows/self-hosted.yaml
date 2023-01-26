@@ -19,15 +19,12 @@ jobs:
           ref: main
           path: default-renovate/
           clean: false
-      - name: CAT default
-        run: |
-          ls default-renovate
-      - name: CAT local
-        run: |
-          cat renovate.json
       - name: Concat config files
         run: |
           jq -s 'add' default-renovate/default.json renovate.json >> default-renovate/renovate-default.json
+      - name: Cat json
+        run: |
+          cat default-renovate/renovate-default.json
       - name: Add Local Repo
         run: |
           jq '.repositories=["${{ github.repository }}"]' <default-renovate/default.json >default-renovate/renovate-default.json     
