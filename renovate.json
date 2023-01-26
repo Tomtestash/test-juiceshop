@@ -3,8 +3,7 @@
   "extends": [
     "local>Tomtestash/renovate-config"
   ],
-  "branchPrefix": "LOCAL-HA/",
-  "labels": ["local label"],
+  "addLabels": ["local label"],
   "packageRules": [
     {
       "matchPackagePatterns": [
