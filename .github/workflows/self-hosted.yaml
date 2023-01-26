@@ -8,7 +8,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Renovate
-        uses: StashInvest/github-action-renovate@v1.0.2
+        uses: Tomtestash/github-action-renovate@v1.0.0
         with:
           renovate_secret: ${{ secrets.RENOVATE_SECRET }}
           enable_automerge: false
