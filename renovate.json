@@ -9,10 +9,11 @@
       "matchPackagePatterns": [
         "*"
       ],
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true,
-      "automergeType": "pr",
-      "automergeStrategy": "auto"
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "all non-major dependencies name",
+      "groupSlug": "all-minor-patch-slug"
     }
-  ]
 }
