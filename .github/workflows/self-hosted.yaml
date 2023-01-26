@@ -7,11 +7,28 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
-      - name: Renovate
-        uses: Tomtestash/github-action-renovate@v1.0.0
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          renovate_secret: ${{ secrets.RENOVATE_SECRET }}
-          enable_automerge: false
+          clean: false
+      - name: Get Default Config
+        uses: actions/checkout@v2
+        with:
+          repository: Tomtestash/renovate-config
+          token: ${{ secrets.RENOVATE_SECRET }}
+          ref: main
+          path: default-renovate/
+          clean: false
+      - name: Add Local Repo
+        run: |
+          jq '.repositories=["${{ github.repository }}"]' <default-renovate/default.json >default-renovate/renovate-default.json     
+      - name: Validate Config Fetch
+        run: |
+          cat default-renovate/renovate-default.json
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v32.118.0
+        with:
+          configurationFile: default-renovate/renovate-default.json
 #   container-scan:
 #     runs-on: ubuntu-latest
 #     steps:
