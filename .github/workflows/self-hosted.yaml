@@ -21,7 +21,7 @@ jobs:
           clean: false
       - name: CAT default
         run: |
-          cat default-renovate.json 
+          ls default-renovate
       - name: CAT local
         run: |
           cat renovate.json
