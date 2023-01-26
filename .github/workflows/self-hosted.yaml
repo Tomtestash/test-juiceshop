@@ -12,25 +12,25 @@ jobs:
         with:
           renovate_secret: ${{ secrets.RENOVATE_SECRET }}
           enable_automerge: false
-  container-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          clean: false
-      - name: LS
-        run: |
-          pwd
-      - name: SBOM
-        uses: anchore/sbom-action@v0.13.1
-        with:
-          dependency-snapshot: true
-          artifact-name: sbom.json
-          path: /home/runner/work/test-juiceshop/test-juiceshop
-      - name: Cat SBOM
-        run: |
-          cat /tmp/sbom-action-*/sbom.json  
+#   container-scan:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#         with:
+#           clean: false
+#       - name: LS
+#         run: |
+#           pwd
+#       - name: SBOM
+#         uses: anchore/sbom-action@v0.13.1
+#         with:
+#           dependency-snapshot: true
+#           artifact-name: sbom.json
+#           path: /home/runner/work/test-juiceshop/test-juiceshop
+#       - name: Cat SBOM
+#         run: |
+#           cat /tmp/sbom-action-*/sbom.json  
       # - name: Verify SBOM 
       #   run: |
       #     cat sbom.json
