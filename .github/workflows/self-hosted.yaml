@@ -3,6 +3,15 @@ on:
   workflow_dispatch:
 
 jobs:
+
+  renovate:
+    runs-on: self-hosted
+    steps:
+      - name: Renovate
+        uses: StashInvest/github-action-renovate@v1.0.2
+        with:
+          renovate_secret: ${{ secrets.RENOVATE_SECRET }}
+          enable_automerge: false
   container-scan:
     runs-on: ubuntu-latest
     steps:
@@ -25,12 +34,3 @@ jobs:
       # - name: Verify SBOM 
       #   run: |
       #     cat sbom.json
-
-  renovate:
-    runs-on: self-hosted
-    steps:
-      - name: Renovate
-        uses: StashInvest/github-action-renovate@v1.0.2
-        with:
-          renovate_secret: ${{ secrets.RENOVATE_SECRET }}
-          enable_automerge: false
