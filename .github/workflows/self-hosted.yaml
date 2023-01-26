@@ -5,7 +5,7 @@ on:
 jobs:
 
   renovate:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Renovate
         uses: Tomtestash/github-action-renovate@v1.0.0
