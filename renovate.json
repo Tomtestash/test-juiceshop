@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", "github>Tomtestash/renovate-config:default.json#v1.0.0"]
+  "extends": ["config:base", "github>Tomtestash/renovate-config:default.json#v1.0.0"],
   "addLabels": ["local label"],
   "packageRules": [
     {
