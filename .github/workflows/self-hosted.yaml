@@ -27,7 +27,18 @@ jobs:
           cat renovate.json
       - name: Concatenate config files
         run: |
-          jq -s 'add' default-renovate/default.json renovate.json > default-renovate/default.json
+          jq -s 'def deepmerge(a;b):
+          reduce b[] as $item (a;
+          reduce ($item | keys_unsorted[]) as $key (.;
+            $item[$key] as $val | ($val | type) as $type | .[$key] = if ($type == "object") then
+              deepmerge({}; [if .[$key] == null then {} else .[$key] end, $val])
+            elif ($type == "array") then
+              (.[$key] + $val | unique)
+            else
+              $val
+            end)
+          );
+          deepmerge({}; .)' default-renovate/default.json renovate.json > default-renovate/renovate-default.json
       - name: Add Local Repo
         run: |
           jq '.repositories=["${{ github.repository }}"]' <default-renovate/default.json >default-renovate/renovate-default.json     
