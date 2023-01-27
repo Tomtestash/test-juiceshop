@@ -9,8 +9,8 @@
         "minor",
         "patch"
       ],
-      "groupName": "all non-major dependencies name",
-      "groupSlug": "all-minor-patch-slug"
+      "groupName": "all non-major dependencies local",
+      "groupSlug": "all-minor-patch-local"
     }
     ]
 }
