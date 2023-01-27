@@ -17,11 +17,11 @@ jobs:
           repository: Tomtestash/renovate-config
           token: ${{ secrets.RENOVATE_TOKEN }}
           ref: main
-          path: default-renovate/
+          path: global-renovate/
           clean: false
       - name: Cat global
         run: | 
-          cat default-renovate/default.json
+          cat global-renovate/default.json
       - name: cat local
         run: |
           cat renovate.json
@@ -38,17 +38,17 @@ jobs:
               $val
             end)
           );
-          deepmerge({}; .)' default-renovate/default.json renovate.json > default-renovate/default.json
+          deepmerge({}; .)' global-renovate/default.json renovate.json > default.json
       - name: Add Local Repo
         run: |
-          jq '.repositories=["${{ github.repository }}"]' < default-renovate/default.json > default-renovate/renovate-final.json     
+          jq '.repositories=["${{ github.repository }}"]' < default.json >> default.json     
       - name: Validate Config Fetch
         run: |
-          cat default-renovate/renovate-final.json
+          cat default.json
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.118.0
         with:
-          configurationFile: default-renovate/renovate-final.json
+          configurationFile: default.json
           token: ${{ secrets.RENOVATE_TOKEN }}
 
 #   container-scan:
