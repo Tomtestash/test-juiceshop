@@ -41,10 +41,10 @@ jobs:
           deepmerge({}; .)' global-renovate/default.json renovate.json > default.json
       - name: Add Local Repo
         run: |
-          jq '.repositories=["${{ github.repository }}"]' < default.json >> default.json     
+          jq '.repositories=["${{ github.repository }}"]' < default.json >> final.json     
       - name: Validate Config Fetch
         run: |
-          cat default.json
+          cat final.json
 #       - name: Self-hosted Renovate
 #         uses: renovatebot/github-action@v32.118.0
 #         with:
