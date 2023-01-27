@@ -38,7 +38,7 @@ jobs:
               $val
             end)
           );
-          deepmerge({}; .)' default-renovate/default.json renovate.json > default-renovate/renovate-default.json
+          deepmerge({}; .)' default-renovate/default.json renovate.json > default-renovate/default.json
       - name: Add Local Repo
         run: |
           jq '.repositories=["${{ github.repository }}"]' <default-renovate/default.json >default-renovate/renovate-default.json     
