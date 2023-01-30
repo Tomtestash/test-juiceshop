@@ -64,6 +64,17 @@ jobs:
       - name: test
         run: |
           echo "${{ env.initial }}"
+      - name: Check first run
+        shell: bash
+        run: |
+          if test -f "renovate.json"; then echo "initial=False" >> $GITHUB_ENV; else  echo "initial=True" >> $GITHUB_ENV; fi
+      - if: ${{ env.initial }} == 'True'
+        uses: actions/checkout@v3
+        with:
+          repository: Tomtestash/renovate-config
+          token: ${{ secrets.RENOVATE_TOKEN }}
+          ref: main
+          clean: false
       - name: Add Local Repo
         run: |
           jq '.repositories=["${{ github.repository }}"]' < renovate.json >> final.json  
