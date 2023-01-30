@@ -57,6 +57,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           clean: false
+      - shell: bash
+        id: checkfile exisitence
+        run: |
+          if test -f "renovate.json"; then echo "initial=False" >> $GITHUB_ENV elif  echo "initial=False" >> $GITHUB_ENV fi
+      - name: test
+        run: |
+          echo "${{ env.initial }}"
       - name: Add Local Repo
         run: |
           jq '.repositories=["${{ github.repository }}"]' < renovate.json >> final.json  
