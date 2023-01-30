@@ -60,7 +60,7 @@ jobs:
       - shell: bash
         id: checkfile-exisitence
         run: |
-          if test -f "renovate.json"; then echo "initial=False" >> $GITHUB_ENV elif  echo "initial=False" >> $GITHUB_ENV fi
+          if test -f "renovate.json"; then echo "initial=False" >> $GITHUB_ENV; else  echo "initial=False" >> $GITHUB_ENV; fi
       - name: test
         run: |
           echo "${{ env.initial }}"
