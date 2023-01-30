@@ -58,7 +58,7 @@ jobs:
         with:
           clean: false
       - shell: bash
-        id: checkfile exisitence
+        id: checkfile-exisitence
         run: |
           if test -f "renovate.json"; then echo "initial=False" >> $GITHUB_ENV elif  echo "initial=False" >> $GITHUB_ENV fi
       - name: test
