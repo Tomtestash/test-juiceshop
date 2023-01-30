@@ -4,12 +4,12 @@
   "packageRules": [
     {
       "matchPackagePatterns": [
-        "@types"
+        "*"
       ],
       "matchUpdateTypes": [
         "minor"
       ],
-      "groupName": "all non-major dependencies types",
+      "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch-types"
     }
     ]
