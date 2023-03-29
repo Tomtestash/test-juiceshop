@@ -4,52 +4,52 @@ on:
 
 jobs:
 
-  renovate:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          clean: false
-      - name: Get Default Config
-        uses: actions/checkout@v2
-        with:
-          repository: Tomtestash/renovate-config
-          token: ${{ secrets.RENOVATE_TOKEN }}
-          ref: main
-          path: global-renovate/
-          clean: false
-      - name: Cat global
-        run: | 
-          cat global-renovate/default.json
-      - name: cat local
-        run: |
-          cat renovate.json
-      - name: Concatenate config files
-        run: |
-          jq -s 'def deepmerge(a;b):
-          reduce b[] as $item (a;
-          reduce ($item | keys_unsorted[]) as $key (.;
-            $item[$key] as $val | ($val | type) as $type | .[$key] = if ($type == "object") then
-              deepmerge({}; [if .[$key] == null then {} else .[$key] end, $val])
-            elif ($type == "array") then
-              (.[$key] + $val | unique)
-            else
-              $val
-            end)
-          );
-          deepmerge({}; .)' global-renovate/default.json renovate.json > default.json
-      - name: Add Local Repo
-        run: |
-          jq '.repositories=["${{ github.repository }}"]' < default.json >> final.json     
-      - name: Validate Config Fetch
-        run: |
-          cat final.json
-#       - name: Self-hosted Renovate
-#         uses: renovatebot/github-action@v32.118.0
+#   renovate:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
 #         with:
-#           configurationFile: final.json
+#           clean: false
+#       - name: Get Default Config
+#         uses: actions/checkout@v2
+#         with:
+#           repository: Tomtestash/renovate-config
 #           token: ${{ secrets.RENOVATE_TOKEN }}
+#           ref: main
+#           path: global-renovate/
+#           clean: false
+#       - name: Cat global
+#         run: | 
+#           cat global-renovate/default.json
+#       - name: cat local
+#         run: |
+#           cat renovate.json
+#       - name: Concatenate config files
+#         run: |
+#           jq -s 'def deepmerge(a;b):
+#           reduce b[] as $item (a;
+#           reduce ($item | keys_unsorted[]) as $key (.;
+#             $item[$key] as $val | ($val | type) as $type | .[$key] = if ($type == "object") then
+#               deepmerge({}; [if .[$key] == null then {} else .[$key] end, $val])
+#             elif ($type == "array") then
+#               (.[$key] + $val | unique)
+#             else
+#               $val
+#             end)
+#           );
+#           deepmerge({}; .)' global-renovate/default.json renovate.json > default.json
+#       - name: Add Local Repo
+#         run: |
+#           jq '.repositories=["${{ github.repository }}"]' < default.json >> final.json     
+#       - name: Validate Config Fetch
+#         run: |
+#           cat final.json
+# #       - name: Self-hosted Renovate
+# #         uses: renovatebot/github-action@v32.118.0
+# #         with:
+# #           configurationFile: final.json
+# #           token: ${{ secrets.RENOVATE_TOKEN }}
   renovate2: 
     runs-on: ubuntu-latest
     steps:
