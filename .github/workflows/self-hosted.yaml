@@ -79,6 +79,10 @@ jobs:
         with:
           configurationFile: final.json
           token: ${{ secrets.RENOVATE_TOKEN }}
+      - name: Cat logs
+        shell: bash
+        run: |
+          cat /tmp/renovatelogs.json
 
 #   container-scan:
 #     runs-on: ubuntu-latest
